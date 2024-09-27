@@ -1,0 +1,8 @@
+[project]
+name = "pgdiff"
+version = "0.1.0"
+description = "List files between two commits"
+readme = "README.md"
+dynamic = ["dependencies"]
+[tool.setuptools.dynamic]
+dependencies = {file = "requirements.txt"}
