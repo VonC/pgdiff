@@ -1,0 +1,7 @@
+*.pdf
+__pycache__/
+.vscode/args
+*.zip
+*.whl
+*_progress*.json
+access_token.txt
