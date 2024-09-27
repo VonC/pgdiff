@@ -50,6 +50,33 @@ def get_changed_files_pygithub(owner, repo, base_commit, head_commit):
     return sorted_changed_files
 
 
+def categorize_files(changed_files):
+    added_files = [file for file, status in changed_files.items() if status == "added"]
+    removed_files = [
+        file
+        for file, status in changed_files.items()
+        if status in ["deleted", "removed"]
+    ]
+    modified_files = [
+        file for file, status in changed_files.items() if status == "modified"
+    ]
+
+    if added_files:
+        print("\nAdded files:")
+        for file in added_files:
+            print(file)
+
+    if removed_files:
+        print("\nRemoved files:")
+        for file in removed_files:
+            print(file)
+
+    if modified_files:
+        print("\nModified files:")
+        for file in modified_files:
+            print(file)
+
+
 # YOUR_GITHUB_USERNAME
 owner = "git"
 # YOUR_REPO_NAME
@@ -60,4 +87,5 @@ base_commit = "7ffcbafbf32185da7dccb4b3f49b871f24ab58c4"
 head_commit = "a116aba5d54bf44c6fc27fa1a4c2431d53cf8ff5"
 
 changed_files = get_changed_files_pygithub(owner, repo, base_commit, head_commit)
-print(changed_files)
+# print(changed_files)
+categorize_files(changed_files)
